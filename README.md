@@ -13,7 +13,12 @@ Dev3: Jason Chan
 A website that allows users to see grocery prices in different parts of the world at a selected time date (month, year). In addition, users will have an option to see when and where it would be optimal to buy the desired produce.
 
 # Install guide:
-How to clone/install.
+1. Clone Repository: 
+2. Navitage into Directory:
+3. Create Virtual Environment (if without):
+4. Activate Virtual Environment:
+5. Install Requirenments: 
 
 # Launch codes:
-How to run.
+1. Nagivate into App:
+2. Run: `python3 __init__.py`
