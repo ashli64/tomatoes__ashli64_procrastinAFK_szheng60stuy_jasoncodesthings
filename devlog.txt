@@ -1,2 +1,7 @@
-everyone -- 2026-02-30 09:30
+AshleyL -- 2026-02-30 11:42
+	flask app: runs locally
+	set up ssh access on primary machine for all other devos
+	researched data visualization
+
+JasonC -- 2026-02-30 09:30
 	dd edits: changed some wording for clarity, removed users.py because it is unnecessary, tweaked frontend diagram for clarity
