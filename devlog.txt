@@ -1,0 +1,2 @@
+everyone -- 2026-02-30 09:30
+	dd edits: changed some wording for clarity, removed users.py because it is unnecessary, tweaked frontend diagram for clarity
