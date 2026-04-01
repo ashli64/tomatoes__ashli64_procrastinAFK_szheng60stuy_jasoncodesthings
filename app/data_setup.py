@@ -29,6 +29,20 @@ def create_grocery_table():
 
 #=============================PARSE=CSVS=============================#
 
+def parse_csv():
+
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+
+    # parse each line of the csv
+    # clean for only the data we need
+    # change into preferred format
+    # add field to table
+    c.execute('INSERT INTO grocery VALUES (?, ?, ?, ?, ?)', (country, name, price, month, year,))
+
+    db.commit()
+    db.close()
+
 #=============================GENERAL=HELPERS=============================#
 
 def create_table(contents):
