@@ -10,12 +10,22 @@ DB_FILE="data.db"
 def create_users_table():
     contents =  """
                 CREATE TABLE IF NOT EXISTS users (
-                    username        TEXT    NOT NULL    PRIMARY KEY,
-                    password        TEXT    NOT NULL,
+                    username        TEXT        NOT NULL    PRIMARY KEY,
+                    password        TEXT        NOT NULL
                 )"""
     create_table(contents)
 
 # grocery
+def create_grocery_table():
+    contents =  """
+                CREATE TABLE IF NOT EXISTS grocery (
+                    country         TEXT        NOT NULL,
+                    name            TEXT        NOT NULL,
+                    price           REAL        NOT NULL,
+                    month           INTEGER     NOT NULL,
+                    year            INTEGER     NOT NULL
+                )"""
+    create_table(contents)
 
 #=============================PARSE=CSVS=============================#
 
