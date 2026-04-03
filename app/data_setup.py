@@ -35,10 +35,26 @@ def parse_csv():
     c = db.cursor()
 
     # parse each line of the csv
-    # clean for only the data we need
-    # change into preferred format
-    # add field to table
-    c.execute('INSERT INTO grocery VALUES (?, ?, ?, ?, ?)', (country, name, price, month, year,))
+    filelines = []
+    with open("grocery.csv") as f:
+        filelines = f.readlines()
+
+    for line in filelines:
+
+        # extract the data we need
+        items = line.split(",")
+        country = items[1]
+        name = items[7]
+        price = items[14]	# convert to numerical
+        time = items[5]		# convert to numerical
+
+        # change into preferred format
+        pricenum = double(price)
+        monthnum = int(time[5:])
+        yearnum = int(time[:4]
+
+        # add field to table
+        c.execute('INSERT INTO grocery VALUES (?, ?, ?, ?, ?)', (country, name, pricenum, monthnum, yearnum,))
 
     db.commit()
     db.close()
