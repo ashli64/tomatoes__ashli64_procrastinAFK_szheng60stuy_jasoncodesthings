@@ -1,7 +1,31 @@
+import sqlite3                      # enable control of an sqlite database
+import hashlib                      # for consistent hashes
+import secrets                      # to generate ids
 
-# users
 
-# grocery data
+DB_FILE="data.db"
+
+#=============================USERS=============================#
+
+# auth
+
+# add_user
+
+# user_exists
+
+# get_all_users
+
+# get a user's favorite searches
+def get_fav_searches(user):
+    keys = ["name", "month", "year"]
+    2d_values = get_match_list("favs", "user", user)
+    return 2d_list_to_dict_list(keys, 2d_values)
+
+# add a favorite search for a user
+def add_fav_search(user, item, year, month):
+    add_row("favs", user, item, year, month)
+
+#=============================GROCERIES=============================#
 
 # get all data pertaining to a certain item
 def get_item_data(item):
@@ -44,7 +68,8 @@ def available_items():
     # remove duplicates
     return items
 
-# helpers
+
+#=============================HELPERS=============================#
 
 # convert a list of data into a dictionary
 def list_to_dict(keys, values):
@@ -68,3 +93,5 @@ def 2d_list_to_dict_list(keys, 2d_values):
 # get_field_list: return all values in a specific field (column) in a row with a matching "id" item
 
 # get_match_list: return all rows that have an "id" field matching the given argument
+
+# add_row: add a row of data to a table
