@@ -23,7 +23,7 @@ def get_fav_searches(user):
 
 # add a favorite search for a user
 def add_fav_search(user, item, year, month):
-    add_row("favs", user, item, year, month)
+    add_row("favs", user, item, month, year)
 
 #=============================GROCERIES=============================#
 
