@@ -15,16 +15,27 @@ def create_users_table():
                 )"""
     create_table(contents)
 
-# grocery
+# groceries
 def create_grocery_table():
     contents =  """
-                CREATE TABLE IF NOT EXISTS grocery (
+                CREATE TABLE IF NOT EXISTS groceries (
                     country         TEXT        NOT NULL,
                     name            TEXT        NOT NULL,
                     price           REAL        NOT NULL,
                     month           INTEGER     NOT NULL,
                     year            INTEGER     NOT NULL
                 )"""
+    create_table(contents)
+
+# favs
+def create_favs_table():
+    contents = """
+               CREATE TABLE IF NOT EXISTS favs (
+                   user		   TEXT	        NOT NULL,
+                   item            TEXT         NOT NULL,
+                   month           INTEGER,
+                   year            INTEGER
+               )"""
     create_table(contents)
 
 #=============================PARSE=CSVS=============================#
