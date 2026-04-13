@@ -47,6 +47,12 @@ def parse_csv():
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
 
+    # first of all, check if the table is already populated
+    c.execute("SELECT COUNT(*) FROM groceries")
+    rows = int(c.fetchone()[0])
+    if (rows > 0):
+        return;
+
     # parse each line of the csv
     filelines = []
     with open("grocery.csv") as f:
@@ -91,3 +97,4 @@ def create_table(contents):
     c.execute(contents)
     db.commit()
     db.close()
+
