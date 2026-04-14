@@ -11,6 +11,10 @@ AshleyL -- 2026-02-30 11:42
 JasonC -- 2026-02-30 09:30
 	dd edits: changed some wording for clarity, removed users.py because it is unnecessary, tweaked frontend diagram for clarity
 
-MayaB -- 2026-04-12 20:49
+MayaB -- 2026-04-13 20:49
 	basically finished data_setup.py, a file of functions that should be run once when the flask app comes to life. tested.
-	wrote code for data.py, a file of functions that the flask app needs to access/mutate data. one function still needs writing. have not tested (mostly refactored code)
+	wrote more code for data.py, a file of functions that the flask app needs to access/mutate data. one function still needs writing. have not tested (mostly refactored code)
+
+MayaB -- 2026-04-14 19:19
+	finished functions in data.py, got rid of syntax errors. certain functions can now be accessed w/o killing the app, so merged with main.
+	still need to test some grocery-related functions but it is 1 am and i have to get up early tmrw :')
