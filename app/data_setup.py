@@ -16,7 +16,7 @@ def create_users_table():
     create_table(contents)
 
 # groceries
-def create_grocery_table():
+def create_groceries_table():
     contents =  """
                 CREATE TABLE IF NOT EXISTS groceries (
                     country         TEXT        NOT NULL,
