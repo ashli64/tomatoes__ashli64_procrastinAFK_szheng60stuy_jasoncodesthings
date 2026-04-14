@@ -91,8 +91,8 @@ def add_user(username, password):
 # get a user's favorite searches
 def get_fav_searches(user):
     keys = ["name", "month", "year"]
-    2d_values = get_row_list("favs", "user", user)
-    return 2d_list_to_dict_list(keys, 2d_values)
+    values = get_row_list("favs", "user", user)
+    return list_2d_to_dict_list(keys, values)
 
 
 # add a favorite search for a user
@@ -119,8 +119,8 @@ def remove_fav_search(search_id):
 # get all data pertaining to a certain item
 def get_item_data(item):
     keys = ["country", "name", "price", "month", "year"]
-    2d_values = get_row_list("groceries", "name", item)
-    return 2d_list_to_dict_list(keys, 2d_values)
+    values = get_row_list("groceries", "name", item)
+    return list_2d_to_dict_list(keys, values)
 
 
 # filter a list of data on an item to only contain data from a specific year and month
@@ -139,7 +139,7 @@ def best_deals(item):
     for cur in range(len(itemdata)-1):
         bestind = cur
         bestprice = itemdata[cur]["price"]
-        for i in range(len(itemdata, cur+1):
+        for i in range(len(itemdata, cur+1)):
             if itemdata[i]["price"] < bestprice:
                 bestind = i
                 bestprice = itemdata[i]["price"]
@@ -201,10 +201,10 @@ def list_to_dict(keys, values):
 
 
 # convert a 2d list of data to a list of dictionaries
-def 2d_list_to_dict_list(keys, 2d_values):
+def list_2d_to_dict_list(keys, values):
     lst = []
-    for vals in 2d_values:
-        lst += [list_to_dict(keys, 2d_values)
+    for val_sublst in values:
+        lst += [list_to_dict(keys, val_sublst)]
     return lst
 
 
