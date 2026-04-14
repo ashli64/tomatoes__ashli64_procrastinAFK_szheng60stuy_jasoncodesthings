@@ -12,7 +12,7 @@ Dev3: Jason Chan
 # Description of Website/App
 A website that allows users to see grocery prices in different parts of the world at a selected time date (month, year). In addition, users will have an option to see when and where it would be optimal to buy the desired produce.
 
-#### Visit our live site at 104.131.177.179
+#### Visit our live site at http://104.131.177.179/
 
 # Install guide:
 1. Clone Repository: `git@github.com:ashli64/tomatoes__ashli64_procrastinAFK_szheng60stuy_jasoncodesthings.git`
