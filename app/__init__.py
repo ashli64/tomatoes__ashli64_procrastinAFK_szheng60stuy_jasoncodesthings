@@ -1,6 +1,8 @@
 from flask import Flask
 app = Flask(__name__)
 
+<<<<<<< HEAD
+=======
 from flask import Flask
 from flask import render_template
 from flask import request
@@ -27,10 +29,15 @@ app = Flask(__name__)
 app.secret_key = "secret"
 
 
+>>>>>>> 23ce1dd3c051279e87558d2fb12247ff66ce81d5
 @app.route("/")
 def hello():
     return "<h1 style='color:blue'>Hello There!</h1>"
 
+<<<<<<< HEAD
+if __name__ == "__main__":
+    app.run(host='0.0.0.0')
+=======
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
@@ -71,3 +78,4 @@ def logout():
 
 if __name__ == "__main__":
     app.run(debug = True, host='0.0.0.0')
+>>>>>>> 23ce1dd3c051279e87558d2fb12247ff66ce81d5
