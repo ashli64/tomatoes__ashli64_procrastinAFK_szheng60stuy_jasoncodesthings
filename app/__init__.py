@@ -10,18 +10,20 @@ from flask import redirect, url_for
 import sqlite3   #enable control of an sqlite database
 import datetime
 
+# our helper db files
+import data_setup
+import data
 
-DB_FILE="discobandit.db"
+
+DB_FILE="data.db"
 
 db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
 c = db.cursor()               #facilitate db ops -- you will use cursor to trigger db events
 
-###############################################
-#maya you got that
-###############################################
-c.execute("CREATE TABLE IF NOT EXISTS users (name TEXT NOT NULL COLLATE NOCASE, bio TEXT, password TEXT NOT NULL, UNIQUE(name))")	# creates table
-c.execute("CREATE TABLE IF NOT EXISTS stories (story_id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, content TEXT, last_update DATE, author_name TEXT)")
-c.execute("CREATE TABLE IF NOT EXISTS edits (edit_id INTEGER PRIMARY KEY AUTOINCREMENT, story_id INTEGER, author_name TEXT, content TEXT)")
+# create tables
+data_setup.create_users_table()
+data_setup.create_favs_table()
+data_setup.create_groceries_table()
 
 app = Flask(__name__)
 app.secret_key = "secret"
