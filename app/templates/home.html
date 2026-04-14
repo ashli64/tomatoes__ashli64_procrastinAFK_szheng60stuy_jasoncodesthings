@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
+    <title>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaah</title>
+  </head>
+  <body>
+    <nav>
+      <a href="{{ url_for('home') }}">Home</a>
+      <a href="{{ url_for('logout') }}">Logout</a>
+    </nav>
+    <h1> {{ username }} </h1>
+    {% if stories %}
+      <table>
+        <tr><th>Title</th><th>Link</th></tr>
+        {% for story in stories %}
+          <tr>
+            <td>{{ story[1] }}</td>
+            <td><a href="{{ url_for('story', story_id=story[0]) }}" target="_blank">read story</a></td>
+          </tr>
+        {% endfor %}
+      </table>
+    {% endif %}
+  </body>
+</html>
