@@ -176,6 +176,19 @@ def clean_list(raw_output):
     return clean_output
 
 
+# turn a list of tuples (returned by .fetchall()) into a 2d list
+def clean_list_2d(raw_output):
+    clean_output = []
+    for lst in raw_output:
+        clean_1d = []
+        for item in lst:
+            if str(item) != 'None' and item != '':
+                clean_1d += [item]
+        if len(lst) > 0:
+            clean_output += [lst]
+    return clean_output
+
+
 # convert a list of data into a dictionary
 def list_to_dict(keys, values):
     if len(keys) != len(values):
@@ -220,8 +233,17 @@ def get_field_list(table, col_name, ID, field):
 
 # get_row_list: return all rows that have an "id" field matching the given argument
 def get_row_list(table, col_name, ID):
-    field = '*'
-    return get_field_list(table, col_name, ID, field)
+
+    db = sqlite3.connet(DB_FILE)
+    c = db.cursor()
+
+    # use ? for unsafe/user provided variables
+    data = c.execute('SELECT * FROM {table} WHERE {col_name} = ?', (ID,)).fetchall()
+
+    db.commit()
+    db.close()
+
+    return clean_list_2d(data)
 
 
 # delete_row: delete a row of data from the table

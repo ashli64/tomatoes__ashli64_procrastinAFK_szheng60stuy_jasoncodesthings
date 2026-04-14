@@ -98,4 +98,3 @@ def create_table(contents):
     c.execute(contents)
     db.commit()
     db.close()
-
