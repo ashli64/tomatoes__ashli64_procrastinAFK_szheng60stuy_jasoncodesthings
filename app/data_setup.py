@@ -33,6 +33,7 @@ def create_grocery_table():
 def create_favs_table():
     contents = """
                CREATE TABLE IF NOT EXISTS favs (
+                   search_id       TEXT         NOT NULL    PRIMARY KEY,
                    user	    	   TEXT	        NOT NULL,
                    item            TEXT         NOT NULL,
                    month           INTEGER,
