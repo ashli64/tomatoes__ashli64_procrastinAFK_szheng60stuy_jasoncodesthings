@@ -33,7 +33,6 @@ app.secret_key = "secret"
 def hello():
     return "<h1 style='color:blue'>Hello There!</h1>"
 
-
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -48,7 +47,7 @@ def login():
         #search user table for password from a certain username
         db = sqlite3.connect(DB_FILE)
         c = db.cursor()
-        account = c.execute("SELECT password FROM users WHERE name = ?", (username,)).fetchone()
+        account = c.execute("SELECT password FROM users WHERE username = ?", (username,)).fetchone()
         db.close()
 
         #if there is no account then reload page
@@ -70,9 +69,38 @@ def logout():
     session.pop('username', None) # remove username from session
     return redirect(url_for('login'))
 
-@app.route("/home")
+@app.route("/register", methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        username = request.form.get('username').strip().lower()
+        password = request.form.get('password').strip()
+
+        # reload page if no username or password was entered
+        if not username or not password:
+            return render_template("register.html", error="No username or password inputted")
+
+        db = sqlite3.connect(DB_FILE)
+        c = db.cursor()
+        # check if username already exists and reload page if it does
+        exists = c.execute("SELECT 1 FROM users WHERE name = ?", (username,)).fetchone()
+        if exists:
+            db.close()
+            return render_template("register.html", error="Username already exists")
+
+        c.execute("INSERT INTO users (name, bio, password) VALUES (?, ?, ?)", (username, "temp bio", password))
+        db.commit()
+        db.close()
+
+        session['username'] = username
+        return redirect(url_for("home"))
+    return render_template("register.html")
+
+@app.route("/home", methods=['GET', 'POST'])
 def home():
-    return redirect(url_for('home'))
+    #if 'username' not in session:
+        #return redirect(url_for('login'))
+
+    return render_template('home.html', request=request.method)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
