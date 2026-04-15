@@ -56,7 +56,7 @@ def parse_csv():
 
     # parse each line of the csv
     filelines = []
-    with open("grocery.csv") as f:
+    with open("app/grocery.csv") as f:
         filelines = f.readlines()[1:]   # get rid of the headaer line
 
     for line in filelines:
