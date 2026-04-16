@@ -40,5 +40,5 @@ HOME STRETCH CHECKLIST:
 * do tailwind stuff, format homepage properly, make it look good :: Ashley
 * get interactive map working and functional :: Sean
 * search features, favoriteing features :: Jason
-* ig float around and help out where possible? her part is pretty much done :: Maya
+* homepage python + ig float around and help out where possible? her part is pretty much done :: Maya
 ====================================
