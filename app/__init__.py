@@ -29,7 +29,7 @@ app = Flask(__name__)
 app.secret_key = "secret"
 
 
->>>>>>> 23ce1dd3c051279e87558d2fb12247ff66ce81d5
+
 @app.route("/")
 def hello():
     return "<h1 style='color:blue'>Hello There!</h1>"
