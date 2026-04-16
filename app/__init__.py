@@ -29,11 +29,11 @@ app = Flask(__name__)
 app.secret_key = "secret"
 
 
-@app.route("/")
-def hello():
-    return "<h1 style='color:blue'>Hello There!</h1>"
+# @app.route("/")
+# def hello():
+#     return "<h1 style='color:blue'>Hello There!</h1>"
 
-@app.route("/login", methods=['GET', 'POST'])
+@app.route("/", methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         # store username and password as a variable
