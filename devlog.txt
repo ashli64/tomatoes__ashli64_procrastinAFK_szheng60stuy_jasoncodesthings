@@ -33,3 +33,12 @@ jasonC -- 2026-04-16 9:44
 
 mayaB -- 2026-04-16 10:20
 	tested & fixed all middleware
+
+HOME STRETCH CHECKLIST:
+------------------------------------
+* html login/register almost working, need to finish :: Ashley
+* do tailwind stuff, format homepage properly, make it look good :: Ashley
+* get interactive map working and functional :: Sean
+* search features, favoriteing features :: Jason
+* homepage python + ig float around and help out where possible? her part is pretty much done :: Maya
+====================================
