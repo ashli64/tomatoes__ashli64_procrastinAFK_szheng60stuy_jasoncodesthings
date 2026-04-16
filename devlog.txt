@@ -24,6 +24,6 @@ jasonC -- 2026-04-15 09:47
 	fixed some errors regarding python not finding the csv file
 	html files still doesn't load yet
 
-ashleyL -- 2026-04-16 02:31
-	broken code can't run locally
-	server code not updated
+ashleyL -- 2026-04-16 02:43
+	broken code can't run locally, fixed
+	html pages need to be connected
