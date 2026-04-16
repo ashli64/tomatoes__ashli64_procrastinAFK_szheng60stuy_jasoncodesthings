@@ -1,16 +1,35 @@
-AshleyL -- 2026-02-31 22:344
+ashleyL -- 2026-02-31 22:344
 	flask app: runs remotely
 	install guide and url of record updated
 	requirenments.txt updates
 
-AshleyL -- 2026-02-30 11:42
+ashleyL -- 2026-02-30 11:42
 	flask app: runs locally
 	set up ssh access on primary machine for all other devos
 	researched data visualization
 
-JasonC -- 2026-02-30 09:30
+jasonC -- 2026-02-30 09:30
 	dd edits: changed some wording for clarity, removed users.py because it is unnecessary, tweaked frontend diagram for clarity
 
-MayaB -- 2026-04-12 20:49
+mayaB -- 2026-04-13 20:49
 	basically finished data_setup.py, a file of functions that should be run once when the flask app comes to life. tested.
-	wrote code for data.py, a file of functions that the flask app needs to access/mutate data. one function still needs writing. have not tested (mostly refactored code)
+	wrote more code for data.py, a file of functions that the flask app needs to access/mutate data. one function still needs writing. have not tested (mostly refactored code)
+
+mayaB -- 2026-04-14 19:19
+	finished functions in data.py, got rid of syntax errors. certain functions can now be accessed w/o killing the app, so merged with main.
+	still need to test some grocery-related functions but it is 1 am and i have to get up early tmrw :')
+
+jasonC -- 2026-04-15 09:47
+	worked on html files but still needs more work
+	fixed some errors regarding python not finding the csv file
+	html files still doesn't load yet
+
+ashleyL -- 2026-04-16 02:43
+	broken code can't run locally, fixed
+	html pages need to be connected
+
+jasonC -- 2026-04-16 9:44
+	html files now functional, now we just need to actually do stuff with it.
+
+mayaB -- 2026-04-16 10:20
+	tested & fixed all middleware

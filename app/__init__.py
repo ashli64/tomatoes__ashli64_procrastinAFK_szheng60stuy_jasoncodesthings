@@ -1,8 +1,6 @@
 from flask import Flask
 app = Flask(__name__)
 
-<<<<<<< HEAD
-=======
 from flask import Flask
 from flask import render_template
 from flask import request
@@ -12,32 +10,28 @@ from flask import redirect, url_for
 import sqlite3   #enable control of an sqlite database
 import datetime
 
+# our helper db files
+import data_setup
+import data
 
-DB_FILE="discobandit.db"
+
+DB_FILE="data.db"
 
 db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
 c = db.cursor()               #facilitate db ops -- you will use cursor to trigger db events
 
-###############################################
-#maya you got that
-###############################################
-c.execute("CREATE TABLE IF NOT EXISTS users (name TEXT NOT NULL COLLATE NOCASE, bio TEXT, password TEXT NOT NULL, UNIQUE(name))")	# creates table
-c.execute("CREATE TABLE IF NOT EXISTS stories (story_id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, content TEXT, last_update DATE, author_name TEXT)")
-c.execute("CREATE TABLE IF NOT EXISTS edits (edit_id INTEGER PRIMARY KEY AUTOINCREMENT, story_id INTEGER, author_name TEXT, content TEXT)")
+# create tables
+data_setup.create_users_table()
+data_setup.create_favs_table()
+data_setup.create_groceries_table()
 
 app = Flask(__name__)
 app.secret_key = "secret"
 
 
-
 @app.route("/")
 def hello():
     return "<h1 style='color:blue'>Hello There!</h1>"
-
-<<<<<<< HEAD
-if __name__ == "__main__":
-    app.run(host='0.0.0.0')
-=======
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
@@ -53,7 +47,7 @@ def login():
         #search user table for password from a certain username
         db = sqlite3.connect(DB_FILE)
         c = db.cursor()
-        account = c.execute("SELECT password FROM users WHERE name = ?", (username,)).fetchone()
+        account = c.execute("SELECT password FROM users WHERE username = ?", (username,)).fetchone()
         db.close()
 
         #if there is no account then reload page
@@ -75,7 +69,38 @@ def logout():
     session.pop('username', None) # remove username from session
     return redirect(url_for('login'))
 
+@app.route("/register", methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        username = request.form.get('username').strip().lower()
+        password = request.form.get('password').strip()
+
+        # reload page if no username or password was entered
+        if not username or not password:
+            return render_template("register.html", error="No username or password inputted")
+
+        db = sqlite3.connect(DB_FILE)
+        c = db.cursor()
+        # check if username already exists and reload page if it does
+        exists = c.execute("SELECT 1 FROM users WHERE name = ?", (username,)).fetchone()
+        if exists:
+            db.close()
+            return render_template("register.html", error="Username already exists")
+
+        c.execute("INSERT INTO users (name, bio, password) VALUES (?, ?, ?)", (username, "temp bio", password))
+        db.commit()
+        db.close()
+
+        session['username'] = username
+        return redirect(url_for("home"))
+    return render_template("register.html")
+
+@app.route("/home", methods=['GET', 'POST'])
+def home():
+    #if 'username' not in session:
+        #return redirect(url_for('login'))
+
+    return render_template('home.html', request=request.method)
 
 if __name__ == "__main__":
-    app.run(debug = True, host='0.0.0.0')
->>>>>>> 23ce1dd3c051279e87558d2fb12247ff66ce81d5
+    app.run(host='0.0.0.0')
