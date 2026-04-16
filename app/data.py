@@ -124,41 +124,54 @@ def get_item_data(item):
 
 
 # filter a list of data on an item to only contain data from a specific year and month
-def filter_time(itemdata, year, month):
+def filter_time(item_data, year, month):
     time_data = []
     for line in item_data:
-        if (line["year"] == year or year == "") and (line["month"] == month or month == ""):
+        i_year = str(line["year"])
+        i_month = str(line["month"])
+        if (i_year == str(year) or year == "") and (i_month == str(month) or month == ""):
             time_data += [line]
     return time_data
 
 
 # return a sorted list of good deals for a specific item
 def best_deals(item):
-    itemdata = get_item_data(item)
-    # sort based on price
-    for cur in range(len(itemdata)-1):
-        bestind = cur
-        bestprice = itemdata[cur]["price"]
-        for i in range(len(itemdata, cur+1)):
-            if itemdata[i]["price"] < bestprice:
-                bestind = i
-                bestprice = itemdata[i]["price"]
-        tmp = itemdata[cur]
-        itemdata[cur] = itemdata[i]
-        itemdata[i] = tmp
-    return best_deals
+
+    item_data = get_item_data(item)
+    
+    # sort based on price -- selection sort (i think?)
+    for cur in range(len(item_data)-1):
+    
+        lowest_ind = cur
+        lowest_price = item_data[cur]["price"]
+
+        # find the next lowest value
+        for i in range(cur+1, len(item_data)):
+            item = item_data[i]
+            if item["price"] < lowest_price:
+                lowest_price = item["price"]
+                lowest_ind = i
+
+        # move the lowest to the front of the unsorted section
+        tmp = item_data[cur]
+        item_data[cur] = item_data[lowest_ind]
+        item_data[lowest_ind] = tmp
+        
+    return item_data
 
 
 # return a sorted list of good deals for a specific item at a specific time
 def best_deals_at(item, year, month):
-    all_deals = best_deals(item)
-    return filter_time(itemdata, year, month)
+    return filter_time(best_deals(item), year, month)
 
 
 # return a list of all items in the database
-def available_items():
-    items = get_field_list("groceries", "name")
+def get_all_items():
+    items = get_col_list("groceries", "name")
     # remove duplicates
+    for item in items:
+        while items.count(item) > 1:
+            items.remove(item)
     return items
 
 
@@ -244,6 +257,21 @@ def get_row_list(table, col_name, ID):
     db.close()
 
     return clean_list_2d(data)
+
+
+# return a list of all items in a column of the table
+def get_col_list(table, col_name):
+
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+
+    # no unsafe/user-provided vars here, safe to use f-strings
+    data = c.execute(f'SELECT {col_name} FROM {table}').fetchall()
+
+    db.commit()
+    db.close()
+
+    return clean_list(data)
 
 
 # delete_row: delete a row of data from the table
