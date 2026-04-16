@@ -27,3 +27,6 @@ jasonC -- 2026-04-15 09:47
 ashleyL -- 2026-04-16 02:43
 	broken code can't run locally, fixed
 	html pages need to be connected
+
+jasonC -- 2026-4-16 9:44
+	html files now functional, now we just need to actually do stuff with it.
