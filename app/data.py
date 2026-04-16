@@ -90,7 +90,7 @@ def add_user(username, password):
 
 # get a user's favorite searches
 def get_fav_searches(user):
-    keys = ["name", "month", "year"]
+    keys = ["id", "user", "name", "month", "year"]
     values = get_row_list("favs", "user", user)
     return list_2d_to_dict_list(keys, values)
 
@@ -110,7 +110,7 @@ def add_fav_search(user, item, year, month):
 
 # remove a favorite search
 def remove_fav_search(search_id):
-    remove_row("favs", search_id)
+    delete_row("favs", "search_id", search_id)
 
 
 #=============================GROCERIES=============================#
@@ -127,7 +127,7 @@ def get_item_data(item):
 def filter_time(itemdata, year, month):
     time_data = []
     for line in item_data:
-        if (line["year"] == year or year == "any") and (line["month"] == month or month == "any"):
+        if (line["year"] == year or year == "") and (line["month"] == month or month == ""):
             time_data += [line]
     return time_data
 
@@ -234,11 +234,11 @@ def get_field_list(table, col_name, ID, field):
 # get_row_list: return all rows that have an "id" field matching the given argument
 def get_row_list(table, col_name, ID):
 
-    db = sqlite3.connet(DB_FILE)
+    db = sqlite3.connect(DB_FILE)
     c = db.cursor()
 
     # use ? for unsafe/user provided variables
-    data = c.execute('SELECT * FROM {table} WHERE {col_name} = ?', (ID,)).fetchall()
+    data = c.execute(f'SELECT * FROM {table} WHERE {col_name} = ?', (ID,)).fetchall()
 
     db.commit()
     db.close()
