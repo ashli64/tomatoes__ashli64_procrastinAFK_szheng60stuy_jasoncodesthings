@@ -82,25 +82,25 @@ def register():
         db = sqlite3.connect(DB_FILE)
         c = db.cursor()
         # check if username already exists and reload page if it does
-        exists = c.execute("SELECT 1 FROM users WHERE name = ?", (username,)).fetchone()
+        exists = c.execute("SELECT 1 FROM users WHERE username = ?", (username,)).fetchone()
         if exists:
             db.close()
             return render_template("register.html", error="Username already exists")
 
-        c.execute("INSERT INTO users (name, bio, password) VALUES (?, ?, ?)", (username, "temp bio", password))
+        c.execute("INSERT INTO users (username, password) VALUES (?, ?)", (username, password))
         db.commit()
         db.close()
 
         session['username'] = username
-        return redirect(url_for("home"))
+        return redirect(url_for("home.html"))
     return render_template("register.html")
 
-@app.route("/home", methods=['GET', 'POST'])
+@app.route("/home")
 def home():
-    #if 'username' not in session:
-        #return redirect(url_for('login'))
+    if 'username' not in session:
+        return redirect(url_for('login'))
 
-    return render_template('home.html', request=request.method)
+    return render_template("home.html")
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
