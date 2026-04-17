@@ -1,15 +1,38 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
-    <title>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaah</title>
+    <meta charset="UTF-8">
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <title>Homepage</title>
   </head>
   <body>
     <nav>
+      <div class="bg-gray-800/95 backdrop-blur-sm flex items-center justify-between h-20 px-6">
         <a href="{{ url_for('logout') }}">Logout</a>
+        <a class="font-semibold bg-white/10 rounded-xl text-white hover:bg-white hover:text-gray-800 py-2 px-4 text-sm transition" href="/register">Register</a>
+      </div>
     </nav>
+
+    <h1 class="text-6xl font-bold underline">
+      Hello world!
+    </h1>
+
     <h1> teh home page </h1>
     <h2> big map here. left-aligned </h2>
     <h3> search features to the right side of the map with some user inputs, maybe dropdowns, maybe sliders, etc. ashley you got that</h3>
   </body>
 </html>
+<!--
+
+<!doctype html>
+<html>
+<head>
+  <title>HOME PAGE</title>
+  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+</head>
+<body>
+  <h1 class="text-3xl font-bold underline">
+    Hello world!
+  </h1>
+</body>
+</html> -->

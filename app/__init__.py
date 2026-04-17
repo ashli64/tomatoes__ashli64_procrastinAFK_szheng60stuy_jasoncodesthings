@@ -103,4 +103,5 @@ def home():
     return render_template('home.html', request=request.method)
 
 if __name__ == "__main__":
+    app.debug=True
     app.run(host='0.0.0.0')
