@@ -24,6 +24,21 @@ jasonC -- 2026-04-15 09:47
 	fixed some errors regarding python not finding the csv file
 	html files still doesn't load yet
 
-ashleyL -- 2026-04-16 02:31
-	broken code can't run locally
-	server code not updated
+ashleyL -- 2026-04-16 02:43
+	broken code can't run locally, fixed
+	html pages need to be connected
+
+jasonC -- 2026-04-16 9:44
+	html files now functional, now we just need to actually do stuff with it.
+
+mayaB -- 2026-04-16 10:20
+	tested & fixed all middleware
+
+HOME STRETCH CHECKLIST:
+------------------------------------
+* html login/register almost working, need to finish :: Ashley
+* do tailwind stuff, format homepage properly, make it look good :: Ashley
+* get interactive map working and functional :: Sean
+* search features, favoriteing features :: Jason
+* homepage python + ig float around and help out where possible? her part is pretty much done :: Maya
+====================================
