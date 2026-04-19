@@ -1,3 +1,9 @@
+seanZ -- 2026-04-19 5:12
+	added svg map 
+	- countries change color when hovered
+	- country names are displayed when clicked on
+	- this is only the bare foundation so far, will be expanded
+
 jasonC -- 2026-04-19 00:48
 	fixed some faulty lines and started search feature
 
