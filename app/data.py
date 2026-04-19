@@ -175,6 +175,16 @@ def get_all_items():
     return items
 
 
+# return a list of all countries in the database
+def get_all_countries():
+    countries = get_col_list("groceries", "country")
+    # remove duplicates
+    for country in countries:
+        while countries.count(country) > 1:
+            countries.remove(country)
+    return countries
+
+
 
 #=============================HELPERS=============================#
 
