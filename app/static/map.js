@@ -1,3 +1,8 @@
+import Color from "https://colorjs.io/dist/color.js";
+
+//-----------------------------------------------
+//mouse interaction side
+//-------------------------------------------------------------
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll("#world-map svg path").forEach(path => {
 
@@ -18,14 +23,24 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+//---------------------------------------------------------
+//js helper functions for drawing + drawing functions
+//--------------------------------------
 // Highlight all pieces of a country
 function highlightCountry(countryId) {
   document.querySelectorAll(`#world-map path[id='${countryId}'], #world-map path[class='${countryId}']`)
-    .forEach(p => p.style.fill = "#ffd27f");
+    .forEach(p => p.style.fill = intColor(0));
 }
 
-// Reset all pieces of a country
+// resets all pieces of a country
 function resetCountry(countryId) {
   document.querySelectorAll(`#world-map path[id='${countryId}'], #world-map path[class='${countryId}']`)
     .forEach(p => p.style.fill = "#ececec");
+}
+
+//given a value between 0 and 1, returns a color in between two colors (documentation source: https://colorjs.io/docs/interpolation)
+function intColor(s) {
+  const color1 = new Color("#121CDB");
+  const color2 = new Color("#DB1F12");
+  return color1.range(color2, {space: "lch", hue: "increasing"})(s);
 }

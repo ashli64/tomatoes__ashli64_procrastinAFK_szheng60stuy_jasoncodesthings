@@ -1,3 +1,6 @@
+seanZ --2026-04-19 16:04
+	color interpolation added to map
+
 seanZ -- 2026-04-19 5:12
 	added svg map 
 	- countries change color when hovered
