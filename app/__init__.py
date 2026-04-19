@@ -92,7 +92,7 @@ def register():
         db.close()
 
         session['username'] = username
-        return redirect(url_for("home.html"))
+        return redirect(url_for("home"))
     return render_template("register.html")
 
 @app.route("/home")
