@@ -1,3 +1,6 @@
+jasonC -- 2026-04-19 00:48
+	fixed some faulty lines and started search feature
+
 ashleyL -- 2026-04-16 22:22
 	tested tailwind on login and homepage
 
