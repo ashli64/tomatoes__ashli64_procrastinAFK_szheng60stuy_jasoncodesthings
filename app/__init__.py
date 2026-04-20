@@ -5,7 +5,7 @@ from flask import Flask
 from flask import render_template
 from flask import request
 from flask import session
-from flask import redirect, url_for
+from flask import redirect, url_for, jsonify
 
 import sqlite3   #enable control of an sqlite database
 import datetime
