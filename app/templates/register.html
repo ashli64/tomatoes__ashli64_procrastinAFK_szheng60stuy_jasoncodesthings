@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
     <title>Register</title>
   </head>
   <body>
@@ -23,6 +24,10 @@
       <h3>{{ error }}</h3>
     {% endif %}
     <!-- add line 26 fr                  om carrots repo (jason's p0 register page) -->
+
+
+    <!-- Allows users to continue as guest. -->
+    <button class="buttons" onclick= "document.location='/home'">Continue as Guest</button>
 
   </body>
 </html>

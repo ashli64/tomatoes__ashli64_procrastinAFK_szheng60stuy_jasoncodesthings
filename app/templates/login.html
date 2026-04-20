@@ -2,13 +2,15 @@
 <html lang="en" dir="ltr">
 
   <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
     <title>Login</title>
   </head>
 
   <body>
+<div class="md:flex md:items-center mb-6s">
     <h2>Enter username and password to login</h2>
-    <form method="post">
+  <form class="bg-white shadow-md rounded ">
       <label for="username">Username:</label>
       <br>
       <input type="text" name="username" id="username">
@@ -19,16 +21,22 @@
       <input type="password" name="password" id="password">
       <br>
       <br>
-      <input type="submit" value="Login">
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+        <input type="submit" value="Login">
+      </button>
     </form>
+
+<div class="md:flex md:items-center mb-6">
     {% if error %}
       <h3>{{ error }}</h3>
     {% endif %}
     <!-- add line 26 from carrots repo (jason's p0 login page) -->
+    <div></div>
     <!-- Allows new user to register. -->
-    <button class="buttons" onclick= "document.location='/register'">Register</button>
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onclick= "document.location='/register'">Register</button>
+    <br>
     <!-- Allows users to continue as guest. -->
-    <button class="buttons" onclick= "document.location='/home'">Continue as Guest</button>
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onclick= "document.location='/home'">Continue as Guest</button>
 
 
   </body>
