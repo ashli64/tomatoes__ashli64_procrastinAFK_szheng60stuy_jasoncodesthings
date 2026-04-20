@@ -209,3 +209,4 @@ __marimo__/
 # Added by tomatoes
 p04v
 data.db
+app/data.db
