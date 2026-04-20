@@ -100,6 +100,9 @@ def home():
     if 'username' not in session:
         return redirect(url_for('login'))
 
+    data_lst = get_data(url)
+    print(data_lst)
+
     return render_template("home.html")
 
 if __name__ == "__main__":
