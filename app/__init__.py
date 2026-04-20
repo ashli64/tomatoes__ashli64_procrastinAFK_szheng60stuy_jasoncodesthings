@@ -69,8 +69,9 @@ def logout():
     session.pop('username', None) # remove username from session
     return redirect(url_for('login'))
 
-@app.route("/register", methods=['GET', 'POST'])
+@app.route('/register', methods=["GET", "POST"])
 def register():
+
     if request.method == 'POST':
         username = request.form.get('username').strip().lower()
         password = request.form.get('password').strip()
@@ -79,20 +80,13 @@ def register():
         if not username or not password:
             return render_template("register.html", error="No username or password inputted")
 
-        db = sqlite3.connect(DB_FILE)
-        c = db.cursor()
-        # check if username already exists and reload page if it does
-        exists = c.execute("SELECT 1 FROM users WHERE username = ?", (username,)).fetchone()
-        if exists:
-            db.close()
-            return render_template("register.html", error="Username already exists")
-
-        c.execute("INSERT INTO users (username, password) VALUES (?, ?)", (username, password))
-        db.commit()
-        db.close()
-
-        session['username'] = username
-        return redirect(url_for("home"))
+        # puts user into database unless if there's an error
+        execute_register = data.add_user(username, password)
+        if execute_register == "success":
+            session['username'] = username
+            return redirect(url_for("home"))
+        else:
+            return render_template("register.html", error = execute_register)
     return render_template("register.html")
 
 @app.route("/home")
