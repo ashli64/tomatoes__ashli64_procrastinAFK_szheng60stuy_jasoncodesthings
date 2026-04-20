@@ -95,13 +95,16 @@ def register():
         return redirect(url_for("home"))
     return render_template("register.html")
 
-@app.route("/home")
+@app.route("/home", methods=['GET', 'POST'])
 def home():
     if 'username' not in session:
         return redirect(url_for('login'))
 
-    data_lst = get_data(url)
-    print(data_lst)
+    if request.method == 'POST':
+        grocery = request.form.get('grocery')
+        time = request.form.get('time')
+        print(grocery)
+        print(time)
 
     return render_template("home.html")
 
