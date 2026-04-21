@@ -1,7 +1,4 @@
 from flask import Flask
-app = Flask(__name__)
-
-from flask import Flask
 from flask import render_template
 from flask import request
 from flask import session
@@ -27,7 +24,6 @@ data_setup.create_groceries_table()
 
 app = Flask(__name__)
 app.secret_key = "secret"
-
 
 # @app.route("/")
 # def hello():
@@ -93,8 +89,22 @@ def register():
 def home():
     if 'username' not in session:
         return redirect(url_for('login'))
-
     return render_template("home.html")
+
+#jsonify flask stuff to send to map.js
+
+@app.route("/api/stats", methods=['GET'])
+def returnStats():
+    testdata = data.get_item_data("Apples (1 kg)")
+    filteredtest = data.filter_time(testdata, 2026, 3)
+    testrange = data.get_range(filteredtest)
+    testlow = data.get_lowest(filteredtest)
+
+    return jsonify({
+        "filtered": filteredtest,
+        "range": testrange,
+        "lowest": testlow
+    })
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
