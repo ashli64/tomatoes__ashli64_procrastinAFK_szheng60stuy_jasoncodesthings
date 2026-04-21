@@ -79,19 +79,19 @@ def register():
 
 @app.route("/home", methods=['GET', 'POST'])
 def home():
-
     if request.method == 'POST':
         grocery = request.form.get('grocery')
-        time = request.form.get('time').split('_')
-        month = time[0]
+        time = request.form.get('time').split('_') #helper variable
+        month = int(time[0])
         year = int(time[1])
-        #print(grocery)
-        #print(time)
-        #print(month)
-        #print(year)
-        print(data.best_deals_at(grocery, year, month))
-        print(data.best_deals(grocery))
-        print(data.get_all_countries())
+
+        favoriteadd = request.form.get('favoriteadd')
+        #if favoriteadd:
+            #print("omg it works")
+            #if 'username' not in session:
+            #    print("The search input did not save because you are not logged in.") have a variable that tells you if the favorite add works or not
+            #else:
+            #    add_fav_search(username, grocery, year, month)
 
     return render_template("home.html")
 
