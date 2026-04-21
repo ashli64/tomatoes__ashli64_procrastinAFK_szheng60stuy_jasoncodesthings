@@ -1,21 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
   <head>
-<<<<<<< HEAD
     <meta charset="UTF-8">
     <script src="https://cdn.tailwindcss.com/3.4.16"></script>
-    <title>Homepage</title>
-  </head>
-  <body>
-    <nav>
-      <div class="bg-gray-800/95 backdrop-blur-sm flex items-center justify-between h-20 px-6">
-        <a href="{{ url_for('logout') }}">Logout</a>
-        <a class="font-semibold bg-white/10 rounded-xl text-white hover:bg-white hover:text-gray-800 py-2 px-4 text-sm transition" href="/register">Register</a>
-      </div>
-=======
-    <meta charset="utf-8">
-    <title>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaah</title>
-
     <style>
       #world-map path{
         fill: #00000094;
@@ -24,17 +12,53 @@
         cursor: pointer;
       }
     </style>
-
+    <title>Homepage</title>
   </head>
+
   <body>
     <nav>
-      <a href="{{ url_for('logout') }}">Logout</a>
->>>>>>> 969e43c8a63152f400fc2fc3d3188743e33de234
+      <div class="bg-blue-500 backdrop-blur-sm flex items-center justify-between h-20 px-6">
+        <a class="font-semibold bg-white/10 rounded-xl text-white hover:bg-white hover:text-gray-800 py-2 px-4 text-sm transition" href="{{ url_for('logout') }}">Logout</a>
+        <h1 class="text-5xl text-black font-bold mb-1">Global Grocery</h1>
+        <a class="font-semibold bg-white/10 rounded-xl text-white hover:bg-white hover:text-gray-800 py-2 px-4 text-sm transition" href="/register">Register</a>
+      </div>
     </nav>
 
-    <h1 class="text-6xl font-bold underline">
-      Hello world!
-    </h1>
+<div class="bg-blue-50">
+    <form method="POST" action="home">
+
+      <div class="center flex mx-2 py-2 mb-1">
+        <label for="grocery">Select Grocery:</label>
+           <select class="block appearance-none w-1/4 bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" id="grocery" name="grocery">
+             <option value="apples">Apples</option>
+             <option value="bananas">Bananas</option>
+             <option value="beef">Beef</option>
+             <option value="bread">Bread</option>
+             <option value="cheese">Cheese</option>
+             <option value="chicken">Chicken</option>
+             <option value="eggs">Eggs</option>
+             <option value="lettuce">Lettuce</option>
+             <option value="milk">Milk</option>
+             <option value="onions">Onions</option>
+             <option value="oranges">Oranges</option>
+             <option value="potatoes">Potatoes</option>
+             <option value="rice">Rice</option>
+             <option value="tomatoes">TOMATOESSSSSSS!!!!!!!!!!</option>
+           </select>
+
+           <label for="time">Select Time:</label>
+            <select class="block appearance-none w-1/4 bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"id="time" name="time">
+              <option value="October_2025">October 2025</option>
+              <option value="November_2025">November 2025</option>
+              <option value="December_2025">December 2025</option>
+              <option value="January_2026">January 2026</option>
+              <option value="February_2026">February 2026</option>
+              <option value="March_2026">March 2026</option>
+             </select>
+            <input class="bg-blue-500 hover:bg-blue-700 text-white text-base font-bold py-2 px-4 rounded-full" type="submit" value="Submit">
+         </div>
+     </form>
+   </div>
 
     <h1> teh home page </h1>
     <h2> big map here. left-aligned </h2>
@@ -991,7 +1015,7 @@
     </div>
     <script src="static/map.js"></script> <!-- bruh it was just "js" before -_- -->
     <div>
-      <form method="POST" action="home">
+      <!-- <form method="POST" action="home">
 			<label for="grocery">Select Grocery:</label>
 			   <select id="grocery" name="grocery">
            <option value="apples">Apples</option>
@@ -1020,7 +1044,7 @@
            <option value="March_2026">March 2026</option>
 				 </select>
        <input type="submit" value="Submit">
-       </form>
+       </form> -->
 		</div>
   </body>
 </html>
