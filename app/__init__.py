@@ -94,14 +94,38 @@ def home():
         year = int(time[1])
 
         favoriteadd = request.form.get('favoriteadd')
-        #if favoriteadd:
+        if favoriteadd:
             #print("omg it works")
-            #if 'username' not in session:
-            #    print("The search input did not save because you are not logged in.") have a variable that tells you if the favorite add works or not
-            #else:
-            #    add_fav_search(username, grocery, year, month)
+            if 'username' not in session:
+                print("The search input did not save because you are not logged in.") #have a variable that tells you if the favorite add works or not
+            else:
+                grocery = request.form.get('grocery')
+                grocery = grocery.replace(' ', '_')
+                #time = request.form.get('time').split('_') #helper variable
+                #month = int(time[0])
+                #year = int(time[1])
+                grocery = grocery + "|" + time[0] + "|" + time[1]
+                data.add_fav_search(session.get('username'), grocery, year, month)
 
-    return render_template("home.html")
+        #print("fme")
+        #print(request.form.get('favoriteselect'))
+        if request.form.get('favoriteselect') != "None":
+            favoriteselect=request.form.get('favoriteselect')
+            favoriteselect_to_list = favoriteselect.split("|")
+            grocery = favoriteselect_to_list[0].replace('_', ' ')
+            month = int(favoriteselect_to_list[1])
+            year = int(favoriteselect_to_list[2])
+        #print("aaaa")
+        #print(grocery)
+        #print(month)
+        #print(year)
+        #print("bbbb")
+
+    if 'username' in session:
+        fav_list = data.get_fav_searches(session.get('username')) #if have time, for loop that goes through dict and makes a list of DISPLAY names
+        #print(fav_list)
+        return render_template("home.html", loggedin = "true", fav_list = fav_list)
+    return render_template("home.html", loggedin = "false")
 
 #jsonify flask stuff to send to map.js
 
