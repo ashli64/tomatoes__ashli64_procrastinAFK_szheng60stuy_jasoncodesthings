@@ -1,6 +1,8 @@
 seanZ --2026-04-21 4:42
 	rewrote color interpolation so doesn't need library anymore
 	JS now able to color entire map given a set of test data
+	added functions in data.py to extract price range and lowest price
+	added first /api/stats to send stuff to map.js from flask
 	TBD:
 		connecting user selection to the data being sent to js (right now just apples on 3/2026 as test)
 		making js send selected country to backend for sidebar
