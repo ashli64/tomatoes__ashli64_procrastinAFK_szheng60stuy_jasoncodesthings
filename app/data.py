@@ -138,10 +138,10 @@ def filter_time(item_data, year, month):
 def best_deals(item):
 
     item_data = get_item_data(item)
-    
+
     # sort based on price -- selection sort (i think?)
     for cur in range(len(item_data)-1):
-    
+
         lowest_ind = cur
         lowest_price = item_data[cur]["price"]
 
@@ -156,7 +156,7 @@ def best_deals(item):
         tmp = item_data[cur]
         item_data[cur] = item_data[lowest_ind]
         item_data[lowest_ind] = tmp
-        
+
     return item_data
 
 
