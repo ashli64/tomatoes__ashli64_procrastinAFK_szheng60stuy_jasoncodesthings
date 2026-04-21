@@ -164,6 +164,17 @@ def best_deals(item):
 def best_deals_at(item, year, month):
     return filter_time(best_deals(item), year, month)
 
+def best_per_country(best_deals):
+    filtered = []
+    countries = []
+    for deal in best_deals:
+        # assumes deals has already been sorted through best_deals or best_deals_at
+        country = deal["country"]
+        if not country in countries:
+            countries.append(country)
+            filtered.append(deal)
+    return filtered
+
 def get_lowest(item_data):
     lowest_price = item_data[0]["price"]
     for item in item_data:
