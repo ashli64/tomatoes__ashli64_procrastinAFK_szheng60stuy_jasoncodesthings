@@ -93,6 +93,14 @@ def home():
         month = int(time[0])
         year = int(time[1])
 
+        favoriteadd = request.form.get('favoriteadd')
+        #if favoriteadd:
+            #print("omg it works")
+            #if 'username' not in session:
+            #    print("The search input did not save because you are not logged in.") have a variable that tells you if the favorite add works or not
+            #else:
+            #    add_fav_search(username, grocery, year, month)
+
     return render_template("home.html")
 
 #jsonify flask stuff to send to map.js
