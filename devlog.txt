@@ -1,4 +1,8 @@
-seanZ --2026-04-19 16:04
+ashleyL -- 2026-04-21 1:14
+	added stylization to log in and register but broke the log in functions
+	continue as guest button also broken
+
+seanZ -- 2026-04-19 16:04
 	color interpolation added to map
 
 seanZ -- 2026-04-19 5:12
