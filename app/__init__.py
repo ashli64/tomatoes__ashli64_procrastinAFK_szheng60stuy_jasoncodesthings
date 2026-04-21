@@ -87,19 +87,11 @@ def register():
 
 @app.route("/home", methods=['GET', 'POST'])
 def home():
-
     if request.method == 'POST':
         grocery = request.form.get('grocery')
-        time = request.form.get('time').split('_')
-        month = time[0]
+        time = request.form.get('time').split('_') #helper variable
+        month = int(time[0])
         year = int(time[1])
-        #print(grocery)
-        #print(time)
-        #print(month)
-        #print(year)
-        print(data.best_deals_at(grocery, year, month))
-        print(data.best_deals(grocery))
-        print(data.get_all_countries())
 
     return render_template("home.html")
 
