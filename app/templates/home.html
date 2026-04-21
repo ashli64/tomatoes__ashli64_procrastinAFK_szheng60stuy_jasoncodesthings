@@ -1002,8 +1002,19 @@
            <option value="3_2026">March 2026</option>
 				 </select>
 
+         {% if loggedin == "true" %}
       <label for="favoriteadd">Favorite this search?</label>
         <input type="checkbox" id="favoriteadd" name="favoriteadd">
+
+        <label for="favoriteselect">Select Favorited Searches:</label>
+           <select id="favoriteselect" name="favoriteselect">
+             <option value = "None">Do not put a favorite search.</option>
+             {% for fav_option in fav_list %}
+                <option value={{ fav_option['name'] }}>{{ fav_option['name'] }}</option>
+             {% endfor %}
+  				 </select>
+        {% endif %}
+
        <input type="submit" value="Submit">
        </form>
 		</div>
