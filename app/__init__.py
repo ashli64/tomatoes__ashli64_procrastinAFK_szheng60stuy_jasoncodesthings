@@ -31,34 +31,26 @@ app.secret_key = "secret"
 
 @app.route("/", methods=['GET', 'POST'])
 def login():
-    if request.method == 'POST':
-        # store username and password as a variable
+
+    # stored active session, take user to response page
+    if 'username' in session:
+        return redirect(url_for("home"))
+
+    if 'username' in request.form:
         username = request.form.get('username').strip().lower()
         password = request.form.get('password').strip()
 
-        # render login page if username or password box is empty
-        if not username or not password:
-            return render_template('login.html', error="No username or password inputted")
-
-        #search user table for password from a certain username
-        db = sqlite3.connect(DB_FILE)
-        c = db.cursor()
-        account = c.execute("SELECT password FROM users WHERE username = ?", (username,)).fetchone()
-        db.close()
-
-        #if there is no account then reload page
-        if account is None:
-            return render_template("login.html", error="Username or password is incorrect")
-
         # check if password is correct, if not then reload page
-        if account[0] != password:
+        if not data.auth(username, password):
             return render_template("login.html", error="Username or password is incorrect")
 
         # if password is correct redirect home
         session["username"] = username
         return redirect(url_for("home"))
 
-    return render_template('login.html')
+    else:
+        return render_template("login.html")
+
 
 @app.route("/logout")
 def logout():
@@ -87,19 +79,19 @@ def register():
 
 @app.route("/home", methods=['GET', 'POST'])
 def home():
-
     if request.method == 'POST':
         grocery = request.form.get('grocery')
-        time = request.form.get('time').split('_')
-        month = time[0]
+        time = request.form.get('time').split('_') #helper variable
+        month = int(time[0])
         year = int(time[1])
-        #print(grocery)
-        #print(time)
-        #print(month)
-        #print(year)
-        print(data.best_deals_at(grocery, year, month))
-        print(data.best_deals(grocery))
-        print(data.get_all_countries())
+
+        favoriteadd = request.form.get('favoriteadd')
+        #if favoriteadd:
+            #print("omg it works")
+            #if 'username' not in session:
+            #    print("The search input did not save because you are not logged in.") have a variable that tells you if the favorite add works or not
+            #else:
+            #    add_fav_search(username, grocery, year, month)
 
     return render_template("home.html")
 
@@ -107,8 +99,8 @@ def home():
 
 @app.route("/api/stats", methods=['GET'])
 def returnStats():
-    testdata = data.get_item_data("Apples (1 kg)")
-    filteredtest = data.filter_time(testdata, 2026, 3)
+    testdata = data.best_deals("Apples (1 kg)")
+    filteredtest = data.best_per_country(testdata, 2026, 3)
     testrange = data.get_range(filteredtest)
     testlow = data.get_lowest(filteredtest)
 
