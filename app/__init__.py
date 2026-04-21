@@ -87,8 +87,6 @@ def register():
 
 @app.route("/home", methods=['GET', 'POST'])
 def home():
-    if 'username' not in session:
-        return redirect(url_for('login'))
 
     if request.method == 'POST':
         grocery = request.form.get('grocery')
