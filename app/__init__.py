@@ -101,7 +101,7 @@ def home():
 
         #print("fme")
         #print(request.form.get('favoriteselect'))
-        if request.form.get('favoriteselect') != "None":
+        if request.form.get('favoriteselect') != "None" and 'username' in session:
             favoriteselect=request.form.get('favoriteselect')
             favoriteselect_to_list = favoriteselect.split("|")
             grocery = favoriteselect_to_list[0].replace('_', ' ')
