@@ -1,38 +1,46 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+    <style>
+     body {background-color: #fefae0;}
+ </style>
     <meta charset="UTF-8">
     <script src="https://cdn.tailwindcss.com/3.4.16"></script>
     <title>Register</title>
   </head>
+
   <body>
-    <h2>Enter username and password to create a new account</h2>
+
+    <div class="text-center block text-3xl text-gray-700 font-bold mb-2">Enter username and password to create a new account</DIV>
     <form method="post">
-      <label for="username">Username:</label>
+      <label class="text-gray-700 text-lg font-bold mb-2" for="username" for="username">Username:</label>
       <br>
-      <input type="text" name="username" id="username">
-      <br>
-      <br>
-      <label for="password">Password:</label>
-      <br>
-      <input type="password" name="password" id="password">
+      <input class="text-gray-700 text-lg font-bold mb-2" for="username" type="text" name="username" id="username">
       <br>
       <br>
-      <input type="submit" value="Register">
+      <label class="text-gray-700 text-lg font-bold mb-2" for="username" for="password">Password:</label>
+      <br>
+      <input class="text-gray-700 text-lg font-bold mb-2" for="username" type="password" name="password" id="password">
+      <br>
+      <br>
+      <input class="bg-blue-500 hover:bg-blue-700 text-white text-base font-bold py-2 px-4 rounded-full" type="submit" value="Register">
     </form>
     {% if error %}
-      <h3>{{ error }}</h3>
+      <h3 class="text-red-500 block text-2xl font-bold my-2 mb-2">{{ error }}</h3>
     {% endif %}
     <!-- add line 26 fr                  om carrots repo (jason's p0 register page) -->
-<<<<<<< HEAD
+
 
 
     <!-- Allows users to continue as guest. -->
-    <button class="buttons" onclick= "document.location='/home'">Continue as Guest</button>
 
-=======
-    <p>Already have an acccount?</p>
-    <button> <a href="{{ url_for('login') }}">Login Here</a> </button>
->>>>>>> 969e43c8a63152f400fc2fc3d3188743e33de234
+    <div class="text-center block text-xl text-gray-700 font-bold">Don't want to make an account?
+      <button class="bg-blue-500 hover:bg-blue-700 text-white text-base font-bold py-2 px-4 rounded-full" onclick= "document.location='/home'">Continue as Guest</button>
+    </div>
+    <br>
+    <div class="text-center block text-xl text-gray-700 font-bold">Already have an account?
+      <button class="bg-blue-500 hover:bg-blue-700 text-white text-base font-bold py-2 px-4 rounded-full"> <a href="{{ url_for('login') }}">Login Here</a> </button>
+    </div>
+
   </body>
 </html>
