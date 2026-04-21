@@ -1,3 +1,12 @@
+seanZ --2026-04-21 4:42
+	rewrote color interpolation so doesn't need library anymore
+	JS now able to color entire map given a set of test data
+	TBD:
+		connecting user selection to the data being sent to js (right now just apples on 3/2026 as test)
+		making js send selected country to backend for sidebar
+		sidebar
+		styling/reszing map (if needed? (probably))
+
 ashleyL -- 2026-04-21 1:14
 	added stylization to log in and register but broke the log in functions
 	continue as guest button also broken

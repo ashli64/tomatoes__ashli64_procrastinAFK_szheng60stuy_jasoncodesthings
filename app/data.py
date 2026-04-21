@@ -164,6 +164,22 @@ def best_deals(item):
 def best_deals_at(item, year, month):
     return filter_time(best_deals(item), year, month)
 
+def get_lowest(item_data):
+    lowest_price = item_data[0]["price"]
+    for item in item_data:
+        if item["price"] < lowest_price:
+            lowest_price = item["price"]
+    return lowest_price
+
+def get_highest(item_data):
+    high_price = item_data[0]["price"]
+    for item in item_data:
+        if item["price"] > high_price:
+            high_price = item["price"]
+    return high_price
+
+def get_range(item_data):
+    return round(get_highest(item_data) - get_lowest(item_data), 2)
 
 # return a list of all items in the database
 def get_all_items():
