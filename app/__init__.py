@@ -1,7 +1,4 @@
 from flask import Flask
-app = Flask(__name__)
-
-from flask import Flask
 from flask import render_template
 from flask import request
 from flask import session
@@ -27,7 +24,6 @@ data_setup.create_groceries_table()
 
 app = Flask(__name__)
 app.secret_key = "secret"
-
 
 # @app.route("/")
 # def hello():
@@ -89,12 +85,38 @@ def register():
             return render_template("register.html", error = execute_register)
     return render_template("register.html")
 
-@app.route("/home")
+@app.route("/home", methods=['GET', 'POST'])
 def home():
-    if 'username' not in session:
-        return redirect(url_for('login'))
+
+    if request.method == 'POST':
+        grocery = request.form.get('grocery')
+        time = request.form.get('time').split('_')
+        month = time[0]
+        year = int(time[1])
+        #print(grocery)
+        #print(time)
+        #print(month)
+        #print(year)
+        print(data.best_deals_at(grocery, year, month))
+        print(data.best_deals(grocery))
+        print(data.get_all_countries())
 
     return render_template("home.html")
+
+#jsonify flask stuff to send to map.js
+
+@app.route("/api/stats", methods=['GET'])
+def returnStats():
+    testdata = data.get_item_data("Apples (1 kg)")
+    filteredtest = data.filter_time(testdata, 2026, 3)
+    testrange = data.get_range(filteredtest)
+    testlow = data.get_lowest(filteredtest)
+
+    return jsonify({
+        "filtered": filteredtest,
+        "range": testrange,
+        "lowest": testlow
+    })
 
 if __name__ == "__main__":
     app.debug=True

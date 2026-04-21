@@ -1,8 +1,27 @@
-seanZ --2026-04-19 16:04
+jasonC -- 2026-04-21 06:08
+	made progress on search feature
+		takes inputs correctly, now need to use middleware to make the magic heppen
+
+seanZ --2026-04-21 4:42
+	rewrote color interpolation so doesn't need library anymore
+	JS now able to color entire map given a set of test data
+	added functions in data.py to extract price range and lowest price
+	added first /api/stats to send stuff to map.js from flask
+	TBD:
+		connecting user selection to the data being sent to js (right now just apples on 3/2026 as test)
+		making js send selected country to backend for sidebar
+		sidebar
+		styling/reszing map (if needed? (probably))
+
+ashleyL -- 2026-04-21 1:14
+	added stylization to log in and register but broke the log in functions
+	continue as guest button also broken
+
+seanZ -- 2026-04-19 16:04
 	color interpolation added to map
 
 seanZ -- 2026-04-19 5:12
-	added svg map 
+	added svg map
 	- countries change color when hovered
 	- country names are displayed when clicked on
 	- this is only the bare foundation so far, will be expanded
