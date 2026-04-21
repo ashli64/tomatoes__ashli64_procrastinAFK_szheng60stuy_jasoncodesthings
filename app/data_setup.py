@@ -79,6 +79,11 @@ def parse_csv():
         price = items[14]	# convert to numerical
         time = items[5]		# convert to numerical
 
+        if name.find(";") != -1:
+            # replace ; with , and remove quotes
+            name = name.replace(";", ",")
+            name = name[1:-1]
+
         # change into preferred format
         pricenum = round(float(price),2)
         monthnum = int(time[5:])

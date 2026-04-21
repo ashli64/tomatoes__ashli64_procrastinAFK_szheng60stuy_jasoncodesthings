@@ -1,3 +1,69 @@
+jasonC -- 2026-04-21 06:08
+	made progress on search feature
+		takes inputs correctly, now need to use middleware to make the magic heppen
+
+seanZ --2026-04-21 4:42
+	rewrote color interpolation so doesn't need library anymore
+	JS now able to color entire map given a set of test data
+	added functions in data.py to extract price range and lowest price
+	added first /api/stats to send stuff to map.js from flask
+	TBD:
+		connecting user selection to the data being sent to js (right now just apples on 3/2026 as test)
+		making js send selected country to backend for sidebar
+		sidebar
+		styling/reszing map (if needed? (probably))
+
+ashleyL -- 2026-04-21 1:14
+	added stylization to log in and register but broke the log in functions
+	continue as guest button also broken
+
+seanZ -- 2026-04-19 16:04
+	color interpolation added to map
+
+seanZ -- 2026-04-19 5:12
+	added svg map
+	- countries change color when hovered
+	- country names are displayed when clicked on
+	- this is only the bare foundation so far, will be expanded
+
+jasonC -- 2026-04-19 00:48
+	fixed some faulty lines and started search feature
+
+ashleyL -- 2026-04-16 22:22
+	tested tailwind on login and homepage
+
+HOME STRETCH CHECKLIST:
+------------------------------------
+* html login/register almost working, need to finish :: Ashley
+* do tailwind stuff, format homepage properly, make it look good :: Ashley
+* get interactive map working and functional :: Sean
+* search features, favoriteing features :: Jason
+* homepage python + ig float around and help out where possible? her part is pretty much done :: Maya
+====================================
+
+mayaB -- 2026-04-16 10:20
+	tested & fixed all middleware
+
+jasonC -- 2026-04-16 9:44
+	html files now functional, now we just need to actually do stuff with it.
+
+ashleyL -- 2026-04-16 02:43
+	broken code can't run locally, fixed
+	html pages need to be connected
+
+jasonC -- 2026-04-15 09:47
+	worked on html files but still needs more work
+	fixed some errors regarding python not finding the csv file
+	html files still doesn't load yet
+
+mayaB -- 2026-04-14 19:19
+	finished functions in data.py, got rid of syntax errors. certain functions can now be accessed w/o killing the app, so merged with main.
+	still need to test some grocery-related functions but it is 1 am and i have to get up early tmrw :')
+
+mayaB -- 2026-04-13 20:49
+	basically finished data_setup.py, a file of functions that should be run once when the flask app comes to life. tested.
+	wrote more code for data.py, a file of functions that the flask app needs to access/mutate data. one function still needs writing. have not tested (mostly refactored code)
+
 ashleyL -- 2026-02-31 22:344
 	flask app: runs remotely
 	install guide and url of record updated
@@ -10,35 +76,3 @@ ashleyL -- 2026-02-30 11:42
 
 jasonC -- 2026-02-30 09:30
 	dd edits: changed some wording for clarity, removed users.py because it is unnecessary, tweaked frontend diagram for clarity
-
-mayaB -- 2026-04-13 20:49
-	basically finished data_setup.py, a file of functions that should be run once when the flask app comes to life. tested.
-	wrote more code for data.py, a file of functions that the flask app needs to access/mutate data. one function still needs writing. have not tested (mostly refactored code)
-
-mayaB -- 2026-04-14 19:19
-	finished functions in data.py, got rid of syntax errors. certain functions can now be accessed w/o killing the app, so merged with main.
-	still need to test some grocery-related functions but it is 1 am and i have to get up early tmrw :')
-
-jasonC -- 2026-04-15 09:47
-	worked on html files but still needs more work
-	fixed some errors regarding python not finding the csv file
-	html files still doesn't load yet
-
-ashleyL -- 2026-04-16 02:43
-	broken code can't run locally, fixed
-	html pages need to be connected
-
-jasonC -- 2026-04-16 9:44
-	html files now functional, now we just need to actually do stuff with it.
-
-mayaB -- 2026-04-16 10:20
-	tested & fixed all middleware
-
-HOME STRETCH CHECKLIST:
-------------------------------------
-* html login/register almost working, need to finish :: Ashley
-* do tailwind stuff, format homepage properly, make it look good :: Ashley
-* get interactive map working and functional :: Sean
-* search features, favoriteing features :: Jason
-* homepage python + ig float around and help out where possible? her part is pretty much done :: Maya
-====================================

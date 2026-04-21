@@ -138,10 +138,10 @@ def filter_time(item_data, year, month):
 def best_deals(item):
 
     item_data = get_item_data(item)
-    
+
     # sort based on price -- selection sort (i think?)
     for cur in range(len(item_data)-1):
-    
+
         lowest_ind = cur
         lowest_price = item_data[cur]["price"]
 
@@ -156,7 +156,7 @@ def best_deals(item):
         tmp = item_data[cur]
         item_data[cur] = item_data[lowest_ind]
         item_data[lowest_ind] = tmp
-        
+
     return item_data
 
 
@@ -164,6 +164,33 @@ def best_deals(item):
 def best_deals_at(item, year, month):
     return filter_time(best_deals(item), year, month)
 
+def best_per_country(best_deals):
+    filtered = []
+    countries = []
+    for deal in best_deals:
+        # assumes deals has already been sorted through best_deals or best_deals_at
+        country = deal["country"]
+        if not country in countries:
+            countries.append(country)
+            filtered.append(deal)
+    return filtered
+
+def get_lowest(item_data):
+    lowest_price = item_data[0]["price"]
+    for item in item_data:
+        if item["price"] < lowest_price:
+            lowest_price = item["price"]
+    return lowest_price
+
+def get_highest(item_data):
+    high_price = item_data[0]["price"]
+    for item in item_data:
+        if item["price"] > high_price:
+            high_price = item["price"]
+    return high_price
+
+def get_range(item_data):
+    return round(get_highest(item_data) - get_lowest(item_data), 2)
 
 # return a list of all items in the database
 def get_all_items():
@@ -173,6 +200,16 @@ def get_all_items():
         while items.count(item) > 1:
             items.remove(item)
     return items
+
+
+# return a list of all countries in the database
+def get_all_countries():
+    countries = get_col_list("groceries", "country")
+    # remove duplicates
+    for country in countries:
+        while countries.count(country) > 1:
+            countries.remove(country)
+    return countries
 
 
 
