@@ -85,10 +85,24 @@ def register():
             return render_template("register.html", error = execute_register)
     return render_template("register.html")
 
-@app.route("/home")
+@app.route("/home", methods=['GET', 'POST'])
 def home():
     if 'username' not in session:
         return redirect(url_for('login'))
+
+    if request.method == 'POST':
+        grocery = request.form.get('grocery')
+        time = request.form.get('time').split('_')
+        month = time[0]
+        year = int(time[1])
+        #print(grocery)
+        #print(time)
+        #print(month)
+        #print(year)
+        print(data.best_deals_at(grocery, year, month))
+        print(data.best_deals(grocery))
+        print(data.get_all_countries())
+
     return render_template("home.html")
 
 #jsonify flask stuff to send to map.js
