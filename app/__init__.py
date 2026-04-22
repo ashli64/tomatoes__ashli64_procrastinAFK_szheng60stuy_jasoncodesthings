@@ -134,11 +134,8 @@ def home():
 
 @app.route("/api/stats", methods=['GET'])
 def returnStats():
-    print(selected_grocery)
-    print(selected_time)
     testdata = data.best_deals_at(selected_grocery, int(selected_time[1]), int(selected_time[0]))
     filteredtest = data.best_per_country(testdata)
-    print(filteredtest)
     testrange = data.get_range(filteredtest)
     testlow = data.get_lowest(filteredtest)
 
