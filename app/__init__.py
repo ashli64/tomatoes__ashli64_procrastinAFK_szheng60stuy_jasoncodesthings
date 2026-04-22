@@ -118,11 +118,10 @@ def home():
             grocery = favoriteselect_to_list[0].replace('_', ' ')
             month = int(favoriteselect_to_list[1])
             year = int(favoriteselect_to_list[2])
-        #print("aaaa")
-        #print(grocery)
-        #print(month)
-        #print(year)
-        #print("bbbb")
+            selected_time = []
+            selected_time.append(month)
+            selected_time.append(year)
+            selected_grocery = grocery
 
     if 'username' in session:
         fav_list = data.get_fav_searches(session.get('username')) #if have time, for loop that goes through dict and makes a list of DISPLAY names
