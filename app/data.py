@@ -118,7 +118,7 @@ def remove_fav_search(search_id):
 
 # get all data pertaining to a certain item
 def get_item_data(item):
-    keys = ["country", "name", "price", "month", "year"]
+    keys = ["city", "country", "name", "price", "month", "year"]
     values = get_row_list("groceries", "name", item)
     return list_2d_to_dict_list(keys, values)
 
@@ -174,6 +174,12 @@ def best_per_country(best_deals):
             countries.append(country)
             filtered.append(deal)
     return filtered
+
+# returns the price in the country from the best_per_country list
+def price_at(best_per_country, country):
+    for deal in best_per_country:
+        if deal["country"] == country:
+            return deal["price"]
 
 def get_lowest(item_data):
     lowest_price = item_data[0]["price"]

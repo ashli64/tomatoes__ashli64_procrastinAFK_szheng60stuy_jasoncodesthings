@@ -19,6 +19,7 @@ def create_users_table():
 def create_groceries_table():
     contents =  """
                 CREATE TABLE IF NOT EXISTS groceries (
+                    city            TEXT        NOT NULL,
                     country         TEXT        NOT NULL,
                     name            TEXT        NOT NULL,
                     price           REAL        NOT NULL,
@@ -74,6 +75,7 @@ def parse_csv():
 
         # extract the data we need
         items = line.split(",")
+        city = items[0]
         country = items[1]
         name = items[7]
         price = items[14]	# convert to numerical
@@ -90,7 +92,7 @@ def parse_csv():
         yearnum = int(time[:4])
 
         # add field to table
-        c.execute('INSERT INTO groceries VALUES (?, ?, ?, ?, ?)', (country, name, pricenum, monthnum, yearnum,))
+        c.execute('INSERT INTO groceries VALUES (?, ?, ?, ?, ?, ?)', (city, country, name, pricenum, monthnum, yearnum,))
 
     db.commit()
     db.close()
@@ -103,3 +105,4 @@ def create_table(contents):
     c.execute(contents)
     db.commit()
     db.close()
+    
