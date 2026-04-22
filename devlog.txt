@@ -1,3 +1,7 @@
+seanZ --2026-04-21 21:27
+	found and fixed a bug with coloring map
+	map now follows user input
+
 jasonC -- 2026-04-21 06:08
 	made progress on search feature
 		takes inputs correctly, now need to use middleware to make the magic heppen
