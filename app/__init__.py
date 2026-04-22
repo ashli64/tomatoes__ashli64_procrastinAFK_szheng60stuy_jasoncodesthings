@@ -22,6 +22,11 @@ data_setup.create_users_table()
 data_setup.create_favs_table()
 data_setup.create_groceries_table()
 
+#global variables
+
+selected_grocery = ""
+selected_time = []
+
 app = Flask(__name__)
 app.secret_key = "secret"
 
@@ -85,6 +90,12 @@ def home():
         month = int(time[0])
         year = int(time[1])
 
+        global selected_time
+        global selected_grocery
+
+        selected_time = time
+        selected_grocery = grocery
+
         favoriteadd = request.form.get('favoriteadd')
         if favoriteadd:
             #print("omg it works")
@@ -123,8 +134,11 @@ def home():
 
 @app.route("/api/stats", methods=['GET'])
 def returnStats():
-    testdata = data.best_deals("Apples (1 kg)")
-    filteredtest = data.best_per_country(testdata, 2026, 3)
+    print(selected_grocery)
+    print(selected_time)
+    testdata = data.best_deals_at(selected_grocery, int(selected_time[1]), int(selected_time[0]))
+    filteredtest = data.best_per_country(testdata)
+    print(filteredtest)
     testrange = data.get_range(filteredtest)
     testlow = data.get_lowest(filteredtest)
 
