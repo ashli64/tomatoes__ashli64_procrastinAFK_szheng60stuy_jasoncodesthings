@@ -92,3 +92,7 @@ NOTABLE DESIGN REVISIONS:
 changed some wording for clarity
 added city to groceries table
 ====================================
+
+ashleyL -- 2026-04-22 2:00
+	all bugs defeated
+	video recorded and submitted
