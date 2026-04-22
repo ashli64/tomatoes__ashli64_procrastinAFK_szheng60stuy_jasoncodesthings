@@ -46,6 +46,7 @@ function colorMap() {
       ).forEach(p => {
         p.dataset.originalColor = color; //stores the original color to reuse after hover leaves
         p.dataset.price = price;
+        p.dataset.city = entry.city;
         p.style.fill = color});
   })
 }
@@ -80,16 +81,27 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     path.addEventListener("click", () => {
+      const inFilter = data.filtered.find(e => e.country === countryName);
+      if (!inFilter){  //blocks out clicking the gray countries
+        console.log("Country not in dataset for this specific product and time");
+        return;
+      }
+
       console.log(countryName, path.dataset.price);
       const country = countryName;
       const price = path.dataset.price;
+      const city = path.dataset.city;
+
+      document.getElementById("location").textContent = city + ', ' + country;
+      document.getElementById("price").textContent = price; 
 
       fetch("/api/country", {
         method: 'POST', 
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({
           country: country,
-          price: price
+          price: price,
+          city: city
         })
       });
     });

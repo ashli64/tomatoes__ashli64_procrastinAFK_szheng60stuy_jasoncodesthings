@@ -1,3 +1,7 @@
+seanZ -- 2026-04-21 23:03
+	added live text display of whatever data-having country user is clicking
+	halved the map size
+
 ashleyL -- 2026-04-21 22:04
 	finished FEF stuff
 	log in, continue as guest, and register all fixed

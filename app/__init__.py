@@ -127,8 +127,8 @@ def home():
     if 'username' in session:
         fav_list = data.get_fav_searches(session.get('username')) #if have time, for loop that goes through dict and makes a list of DISPLAY names
         #print(fav_list)
-        return render_template("home.html", loggedin = "true", fav_list = fav_list)
-    return render_template("home.html", loggedin = "false")
+        return render_template("home.html", loggedin = "true", fav_list = fav_list, product = selected_grocery, location = session.get("clicked_location"), price = session.get("clicked_price"))
+    return render_template("home.html", loggedin = "false", product = selected_grocery, location = session.get("clicked_location"), price = session.get("clicked_price"))
 
 #jsonify flask stuff to send to map.js
 
@@ -138,7 +138,6 @@ def returnStats():
     filteredtest = data.best_per_country(testdata)
     testrange = data.get_range(filteredtest)
     testlow = data.get_lowest(filteredtest)
-
     return jsonify({
         "filtered": filteredtest,
         "range": testrange,
@@ -150,7 +149,12 @@ def receive_country():
     data = request.get_json()
     country= data.get("country")
     price = data.get("price")
+    city = data.get("city")
     print(data)
+
+    session["clicked_price"] = price
+    session["clicked_location"] = str(city) + ", " + str(country)
+
     return ""
 
 if __name__ == "__main__":
