@@ -134,10 +134,14 @@ def home():
 
 @app.route("/api/stats", methods=['GET'])
 def returnStats():
-    testdata = data.best_deals_at(selected_grocery, int(selected_time[1]), int(selected_time[0]))
-    filteredtest = data.best_per_country(testdata)
-    testrange = data.get_range(filteredtest)
-    testlow = data.get_lowest(filteredtest)
+    filteredtest = {}
+    testrange = 0
+    testlow = 0
+    if len(selected_time) > 0:
+        testdata = data.best_deals_at(selected_grocery, int(selected_time[1]), int(selected_time[0]))
+        filteredtest = data.best_per_country(testdata)
+        testrange = data.get_range(filteredtest)
+        testlow = data.get_lowest(filteredtest)
     return jsonify({
         "filtered": filteredtest,
         "range": testrange,
