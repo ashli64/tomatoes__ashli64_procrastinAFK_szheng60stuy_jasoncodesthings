@@ -145,6 +145,14 @@ def returnStats():
         "lowest": testlow
     })
 
+@app.route("/api/country", methods=['POST'])
+def receive_country():
+    data = request.get_json()
+    country= data.get("country")
+    price = data.get("price")
+    print(data)
+    return ""
+
 if __name__ == "__main__":
     app.debug=True
     app.run(host='0.0.0.0')
