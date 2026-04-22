@@ -24,3 +24,11 @@ A website that allows users to see grocery prices in different parts of the worl
 # Launch codes:
 1. Nagivate into App: `cd app`
 2. Run: `python3 __init__.py`
+
+
+### FEATURE SPOTLIGHT
+* Try clicking around our interactive map on the home page! 
+* Simply enter a search in the search bar and click on the various highlighted countries to view pricing data from those countries.
+
+### KNOWN BUGS/ISSUES
+* It's not super clear that choosing to load a favorite search will override searching for whatever is in the normal search area.
