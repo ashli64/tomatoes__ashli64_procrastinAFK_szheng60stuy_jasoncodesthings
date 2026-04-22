@@ -89,6 +89,7 @@ def home():
         time = request.form.get('time').split('_') #helper variable
         month = int(time[0])
         year = int(time[1])
+        dtime = str(month) + "/" + str(year)
 
         global selected_time
         global selected_grocery
@@ -127,8 +128,8 @@ def home():
     if 'username' in session:
         fav_list = data.get_fav_searches(session.get('username')) #if have time, for loop that goes through dict and makes a list of DISPLAY names
         #print(fav_list)
-        return render_template("home.html", loggedin = "true", fav_list = fav_list, product = selected_grocery, location = session.get("clicked_location"), price = session.get("clicked_price"))
-    return render_template("home.html", loggedin = "false", product = selected_grocery, location = session.get("clicked_location"), price = session.get("clicked_price"))
+        return render_template("home.html", loggedin = "true", fav_list = fav_list, dtime = dtime, product = selected_grocery, location = session.get("clicked_location"), price = session.get("clicked_price"))
+    return render_template("home.html", loggedin = "false", product = selected_grocery, dtime = dtime, location = session.get("clicked_location"), price = session.get("clicked_price"))
 
 #jsonify flask stuff to send to map.js
 
