@@ -17,7 +17,7 @@ A website that allows users to see grocery prices in different parts of the worl
 # Install guide:
 1. Clone Repository: `git@github.com:ashli64/tomatoes__ashli64_procrastinAFK_szheng60stuy_jasoncodesthings.git`
 2. Navitage into Directory: `cd tomatoestomatoes__ashli64_procrastinAFK_szheng60stuy_jasoncodesthings`
-3. Create Virtual Environment (if without): `python3 -m venv env`
+3. Create Virtual Environment (if without): `python3 -m venv venv`
 4. Activate Virtual Environment: `. venv/bin/activate`
 5. Install Requirenments: `pip install -r requirements.txt`
 
