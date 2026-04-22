@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       const price = path.dataset.price;
       const city = path.dataset.city;
 
-      document.getElementById("location").textContent = city + ', ' + country;
+      document.getElementById("location").textContent = city + ', ' + country; //for live display in home.html through <span></span>
       document.getElementById("price").textContent = price; 
 
       fetch("/api/country", {

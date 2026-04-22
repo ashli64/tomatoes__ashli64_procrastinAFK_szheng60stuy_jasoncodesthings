@@ -144,7 +144,7 @@ def returnStats():
         "lowest": testlow
     })
 
-@app.route("/api/country", methods=['POST'])
+@app.route("/api/country", methods=['POST']) #receiving data from any data-having country the user clicks
 def receive_country():
     data = request.get_json()
     country= data.get("country")
