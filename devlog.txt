@@ -1,3 +1,13 @@
+ashleyL -- 2026-03-30 11:42
+	flask app: runs locally
+	set up ssh access on primary machine for all other devos
+	researched data visualization
+
+ashleyL -- 2026-03-31 22:34
+	flask app: runs remotely
+	install guide and url of record updated
+	requirenments.txt updates
+
 seanZ -- 2026-04-21 23:03
 	added live text display of whatever data-having country user is clicking
 	halved the map size
@@ -76,15 +86,9 @@ mayaB -- 2026-04-13 20:49
 	basically finished data_setup.py, a file of functions that should be run once when the flask app comes to life. tested.
 	wrote more code for data.py, a file of functions that the flask app needs to access/mutate data. one function still needs writing. have not tested (mostly refactored code)
 
-ashleyL -- 2026-02-31 22:344
-	flask app: runs remotely
-	install guide and url of record updated
-	requirenments.txt updates
-
-ashleyL -- 2026-02-30 11:42
-	flask app: runs locally
-	set up ssh access on primary machine for all other devos
-	researched data visualization
-
-jasonC -- 2026-02-30 09:30
-	dd edits: changed some wording for clarity, removed users.py because it is unnecessary, tweaked frontend diagram for clarity
+jasonC -- 2026-04-22 09:30
+NOTABLE DESIGN REVISIONS:
+------------------------------------
+changed some wording for clarity
+added city to groceries table
+====================================
