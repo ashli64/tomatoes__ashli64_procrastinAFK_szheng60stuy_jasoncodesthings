@@ -1,4 +1,8 @@
-seanZ --2026-04-21 21:27
+ashleyL -- 2026-04-21 22:04
+	finished FEF stuff
+	log in, continue as guest, and register all fixed
+
+seanZ -- 2026-04-21 21:27
 	found and fixed a bug with coloring map
 	map now follows user input
 
