@@ -134,7 +134,7 @@ def home():
 
 @app.route("/api/stats", methods=['GET'])
 def returnStats():
-    filteredtest = {}
+    filteredtest = []
     testrange = 0
     testlow = 0
     if len(selected_time) > 0:
